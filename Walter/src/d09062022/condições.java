@@ -39,6 +39,11 @@ public class condições extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btnPróximo.setText("Próximo");
+        btnPróximo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPróximoActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Tipo de apoio"));
 
@@ -119,6 +124,21 @@ public class condições extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnPróximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPróximoActionPerformed
+        
+        if(radEncastrada.isSelected ()){
+                encastrada c = new encastrada();
+                c.setVisible(true);
+                }else if (radSimplismenteApoida.isSelected()){
+                 encastrada c = new encastrada();
+                c.setVisible(true);
+                }else if (radSimplismenteApoida.isSelected()){
+                 encastrada c = new encastrada();
+                c.setVisible(true);
+                }
+       
+    }//GEN-LAST:event_btnPróximoActionPerformed
 
     /**
      * @param args the command line arguments

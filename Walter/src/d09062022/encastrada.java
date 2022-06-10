@@ -23,7 +23,6 @@ public class encastrada extends javax.swing.JFrame {
      
     public encastrada() {
         initComponents();
-        lerFicheiroObjecto();
     }
       
 
@@ -258,33 +257,8 @@ public class encastrada extends javax.swing.JFrame {
     private void txtCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCalcularActionPerformed
 
         calculoEstrutural k;
-        double largura = dou(txtCodigo.getText());
-        if(cod > 0){
-            
-            if(existe(cod) == false){
-                k = new Estudante();
-                k.setCodigo(cod);
-                k.setNome(txtNome.getText());
-                k.setSexo((String)cboSexo.getSelectedItem());
-                
-                if(radCasado.isSelected ()){
-                k.setEstadocivil("Casado");
-                }else if (radSolteiro.isSelected()){
-                k.setEstadocivil("Solteiro");
-                }
-                
-                x.addElement(k);
-                JOptionPane.showMessageDialog(null, "Registrado com sucesso!");
-                
-                txtCodigo.setText("");
-                txtNome.setText("");
-                cboSexo.setSelectedIndex(-1);
-                radCasado.setSelected(false);
-                radSolteiro.setSelected(false);
-                
-            }else JOptionPane.showMessageDialog(null, "O c\u00f3digo j\u00e1 existe!");
-        }else JOptionPane.showMessageDialog(null, "C\u00f3digo Inv\u00e1lido");
-        escreveFicheiroObjecto();
+        
+        
     }//GEN-LAST:event_txtCalcularActionPerformed
 
     /**
