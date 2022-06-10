@@ -10,6 +10,7 @@ package d09062022;
  * @author Gledse_Jamisse
  */
 public class calculoEstrutural {
+    private double carga;
     private double Mmax;
     private double Ra;
     private double altura;
@@ -33,6 +34,12 @@ public class calculoEstrutural {
     public void setRa(double Ra) {
         this.Ra = Ra;
     }*/
+    public double getCarga() {
+        return carga;
+    }
+    public void setCarga(double carga) {
+        this.carga = carga;
+    }
     
     public double getAltura() {
         return altura;

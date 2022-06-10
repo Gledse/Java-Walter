@@ -24,6 +24,7 @@ public class encastrada extends javax.swing.JFrame {
      
     public encastrada() {
         initComponents();
+        lerFicheiroObjecto();
     }
       
 
@@ -60,6 +61,8 @@ public class encastrada extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cboDirecao = new javax.swing.JComboBox<>();
         btnAdicionar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        txtCarga = new javax.swing.JTextField();
 
         setTitle("Encastrada");
 
@@ -194,7 +197,7 @@ public class encastrada extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         Tabela.setModel(new javax.swing.table.DefaultTableModel(
@@ -202,7 +205,7 @@ public class encastrada extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Momento Máximo", "Reação de apoio"
+                "Momento Máximo", "Reação de apoio A", "Reação de apoio B"
             }
         ));
         jScrollPane1.setViewportView(Tabela);
@@ -218,6 +221,8 @@ public class encastrada extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setText("Carga");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -226,7 +231,12 @@ public class encastrada extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -252,7 +262,11 @@ public class encastrada extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -260,7 +274,7 @@ public class encastrada extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(cboDirecao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtCalcular)
                             .addComponent(btnAdicionar))))
@@ -286,18 +300,17 @@ public class encastrada extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCalcularActionPerformed
-
+ 
         calculoEstrutural k;
-        for(int i = 0; i < x.size(); i++){
-            k = (calculoEstrutural)x.get(i);
-            
-            double largura = k.getLargura();
-            double Mmax = 2*(largura*largura)/2;
-            double Ra = 2*largura/2;
-            DefaultTableModel val = (DefaultTableModel)Tabela.getModel();
-            val.addRow(new String []{Mmax+"KN/m",Ra +"KN/m"});
+        k = new calculoEstrutural();
+        
+        double largura = k.getLargura();
+        double Mmax = k.getCarga()*(largura*largura)/2;
+        double Ra = k.getCarga()*largura/2;
+        DefaultTableModel val = (DefaultTableModel)Tabela.getModel();
+        val.addRow(new String []{"KN/m","KN/m","KN/m"});
                 
-            if(k.getDireção().equals("Vertical positivo")){
+            /*if(k.getDireção().equals("Vertical positivo")){
                 cboDirecao.setSelectedItem(k.getDireção());
             } else if(k.getDireção().equals("Vertical negativo")){
                 cboDirecao.setSelectedItem(k.getDireção());
@@ -309,8 +322,7 @@ public class encastrada extends javax.swing.JFrame {
                 cboDirecao.setSelectedItem(k.getDireção());
             } else if(k.getDireção().equals("Rotação negativa")){
                 cboDirecao.setSelectedItem(k.getDireção());
-            }
-        }
+            }*/
         
         
     }//GEN-LAST:event_txtCalcularActionPerformed
@@ -320,12 +332,35 @@ public class encastrada extends javax.swing.JFrame {
         calculoEstrutural k;
         k = new calculoEstrutural();
         
-        k.setAltura(Double.parseDouble(txtAltura.getText()));
+        //k.setAltura(Double.parseDouble(txtAltura.getText()));
         k.setLargura(Double.parseDouble(txtLargura.getText()));
-        k.setDireção((String)cboDirecao.getSelectedItem());
+        k.setCarga(Double.parseDouble(txtCarga.getText()));
+        //k.setDireção((String)cboDirecao.getSelectedItem());
+        /*if(radCentímetros.isSelected ()){
+            k.setUnidadeMedicao("cm");
+        }else if (radMetrôs.isSelected()){
+            k.setUnidadeMedicao("m");
+        }*/
         x.addElement(k);
+        escreveFicheiroObjecto();
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
+    public void escreveFicheiroObjecto(){
+        try{ File f = new File("ProgramacaoJava.DAT");
+             FileOutputStream fos = new FileOutputStream(f);
+             ObjectOutputStream oos = new ObjectOutputStream(fos);
+             oos.writeObject(x);
+             oos.close();
+        }catch (Exception e){System.out.println("Erro!");}
+    }
+    public void lerFicheiroObjecto(){
+        try{ File f = new File("ProgramacaoJava.DAT");
+             FileInputStream fis = new FileInputStream(f);
+             ObjectInputStream ois = new ObjectInputStream(fis);
+             x = (Vector)ois.readObject();
+             ois.close();
+        }catch (Exception e){System.out.println("Erro!");}
+    }
     /**
      * Vertical positivo
         Vertical negativo
@@ -377,6 +412,7 @@ public class encastrada extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -392,6 +428,7 @@ public class encastrada extends javax.swing.JFrame {
     private javax.swing.JRadioButton radTriangular;
     private javax.swing.JTextField txtAltura;
     private javax.swing.JButton txtCalcular;
+    private javax.swing.JTextField txtCarga;
     private javax.swing.JTextField txtLargura;
     // End of variables declaration//GEN-END:variables
 }

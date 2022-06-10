@@ -36,6 +36,8 @@ public class condições extends javax.swing.JFrame {
         radDuplicamenteApoiada = new javax.swing.JRadioButton();
         radLimpar = new javax.swing.JRadioButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
         btnPróximo.setText("Próximo");
         btnPróximo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
