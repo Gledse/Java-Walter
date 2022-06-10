@@ -12,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import javax.swing.JOptionPane;
 import java.util.*;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -287,22 +288,30 @@ public class encastrada extends javax.swing.JFrame {
     private void txtCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCalcularActionPerformed
 
         calculoEstrutural k;
-        k = new calculoEstrutural();
+        for(int i = 0; i < x.size(); i++){
+            k = (calculoEstrutural)x.get(i);
+            
+            double largura = k.getLargura();
+            double Mmax = 2*(largura*largura)/2;
+            double Ra = 2*largura/2;
+            DefaultTableModel val = (DefaultTableModel)Tabela.getModel();
+            val.addRow(new String []{Mmax+"KN/m",Ra +"KN/m"});
+                
+            if(k.getDireção().equals("Vertical positivo")){
+                cboDirecao.setSelectedItem(k.getDireção());
+            } else if(k.getDireção().equals("Vertical negativo")){
+                cboDirecao.setSelectedItem(k.getDireção());
+            } else if(k.getDireção().equals("Horizontal positivo")){
+                cboDirecao.setSelectedItem(k.getDireção());
+            } else if(k.getDireção().equals("Horizontal negativo")){
+                cboDirecao.setSelectedItem(k.getDireção());
+            } else if(k.getDireção().equals("Rotação positiva")){
+                cboDirecao.setSelectedItem(k.getDireção());
+            } else if(k.getDireção().equals("Rotação negativa")){
+                cboDirecao.setSelectedItem(k.getDireção());
+            }
+        }
         
-        if(k.getDireção().equals("Vertical positivo")){
-            
-        } else if(k.getDireção().equals("Vertical negativo")){
-            
-        } else if(k.getDireção().equals("Horizontal positivo")){
-            
-        } else if(k.getDireção().equals("Horizontal negativo")){
-            
-        } else if(k.getDireção().equals("Rotação positiva")){
-            
-        } else if(k.getDireção().equals("Rotação negativa")){
-            
-        } 
-        cboDirecao.setSelectedItem(k.getDireção());
         
     }//GEN-LAST:event_txtCalcularActionPerformed
 
