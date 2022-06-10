@@ -10,13 +10,31 @@ package d09062022;
  * @author Gledse_Jamisse
  */
 public class calculoEstrutural {
+    private double Mmax;
+    private double Ra;
     private double altura;
     private double largura;
     private String unidadeMedicao;
     private String distribuida;
     private String pontual;
+    private String direção;
+    
 
-     public double getAltura() {
+    /*public double getMmax() {
+        return Mmax;
+    }
+    public void setMmax(double Mmax) {
+        this.Mmax = Mmax;
+    }
+    
+    public double getRa() {
+        return Ra;
+    }
+    public void setRa(double Ra) {
+        this.Ra = Ra;
+    }*/
+    
+    public double getAltura() {
         return altura;
     }
     public void setAltura(double altura) {
@@ -49,5 +67,12 @@ public class calculoEstrutural {
     }
     public void setPontual(String pontual) {
         this.pontual = pontual;
+    }
+    
+    public String getDireção() {
+        return direção;
+    }
+    public void setDireção(String direção) {
+        this.direção = direção;
     }
 }
