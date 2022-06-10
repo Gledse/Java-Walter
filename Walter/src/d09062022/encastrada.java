@@ -298,7 +298,7 @@ public class encastrada extends javax.swing.JFrame {
         
         double largura = Double.parseDouble(txtLargura.getText());
         double carga = Double.parseDouble(txtCarga.getText());
-        double Mmax = carga*(largura*largura)/2;
+        double Mmax = carga*(largura*largura)/8;
         double Ra = carga*largura/2;
         double Rb = carga*largura/2;
         DefaultTableModel val = (DefaultTableModel)Tabela.getModel();
