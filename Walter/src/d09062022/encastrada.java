@@ -24,7 +24,7 @@ public class encastrada extends javax.swing.JFrame {
      
     public encastrada() {
         initComponents();
-        lerFicheiroObjecto();
+        //lerFicheiroObjecto();
     }
       
 
@@ -308,7 +308,7 @@ public class encastrada extends javax.swing.JFrame {
         double Mmax = k.getCarga()*(largura*largura)/2;
         double Ra = k.getCarga()*largura/2;
         DefaultTableModel val = (DefaultTableModel)Tabela.getModel();
-        val.addRow(new String []{"KN/m","KN/m","KN/m"});
+        val.addRow(new String []{k.getCarga()+"KN/m",k.getLargura()+"KN/m","KN/m"});
                 
             /*if(k.getDireção().equals("Vertical positivo")){
                 cboDirecao.setSelectedItem(k.getDireção());
@@ -333,8 +333,8 @@ public class encastrada extends javax.swing.JFrame {
         k = new calculoEstrutural();
         
         //k.setAltura(Double.parseDouble(txtAltura.getText()));
-        k.setLargura(Double.parseDouble(txtLargura.getText()));
-        k.setCarga(Double.parseDouble(txtCarga.getText()));
+        k.setLargura(Integer.parseInt(txtLargura.getText()));
+        k.setCarga(Integer.parseInt(txtCarga.getText()));
         //k.setDireção((String)cboDirecao.getSelectedItem());
         /*if(radCentímetros.isSelected ()){
             k.setUnidadeMedicao("cm");
@@ -342,10 +342,10 @@ public class encastrada extends javax.swing.JFrame {
             k.setUnidadeMedicao("m");
         }*/
         x.addElement(k);
-        escreveFicheiroObjecto();
+        //escreveFicheiroObjecto();
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
-    public void escreveFicheiroObjecto(){
+    /*public void escreveFicheiroObjecto(){
         try{ File f = new File("ProgramacaoJava.DAT");
              FileOutputStream fos = new FileOutputStream(f);
              ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -360,7 +360,7 @@ public class encastrada extends javax.swing.JFrame {
              x = (Vector)ois.readObject();
              ois.close();
         }catch (Exception e){System.out.println("Erro!");}
-    }
+    }*/
     /**
      * Vertical positivo
         Vertical negativo

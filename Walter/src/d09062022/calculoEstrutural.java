@@ -24,62 +24,59 @@ public class calculoEstrutural {
     /*public double getMmax() {
         return Mmax;
     }
-    public void setMmax(double Mmax) {
-        this.Mmax = Mmax;
-    }
-    
     public double getRa() {
         return Ra;
     }
-    public void setRa(double Ra) {
-        this.Ra = Ra;
-    }*/
+    */
     public double getCarga() {
         return carga;
     }
-    public void setCarga(double carga) {
-        this.carga = carga;
-    }
-    
     public double getAltura() {
         return altura;
+    }
+    public double getLargura() {
+        return largura;
+    }
+    public String getUnidadeMedicao() {
+        return unidadeMedicao;
+    }
+    public String getDistribuida() {
+        return unidadeMedicao;
+    }
+    public String getPontual() {
+        return pontual;
+    }
+    public String getDireção() {
+        return direção;
+    }
+    
+    public void setCarga(double carga) {
+        this.carga = carga;
     }
     public void setAltura(double altura) {
         this.altura = altura;
     }
-    
-     public double getLargura() {
-        return largura;
-    }
     public void setLargura(double largura) {
         this.largura = largura;
-    }
-    
-    public String getUnidadeMedicao() {
-        return unidadeMedicao;
     }
     public void setUnidadeMedicao(String unidadeMedicao) {
         this.unidadeMedicao = unidadeMedicao;
     }
-    
-    public String getDistribuida() {
-        return unidadeMedicao;
-    }
     public void setDistribuida(String distribuida) {
         this.distribuida = distribuida;
-    }
-    
-    public String getPontual() {
-        return pontual;
     }
     public void setPontual(String pontual) {
         this.pontual = pontual;
     }
-    
-    public String getDireção() {
-        return direção;
-    }
     public void setDireção(String direção) {
         this.direção = direção;
     }
+    /*
+    public void setMmax(double Mmax) {
+        this.Mmax = Mmax;
+    }
+    public void setRa(double Ra) {
+        this.Ra = Ra;
+    }
+    */
 }
